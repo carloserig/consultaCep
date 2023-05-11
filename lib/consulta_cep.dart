@@ -6,14 +6,16 @@ void main() async {
 
   print('Consulta de CEP usando apiCEP');
   print('-----------------------------');  
-  final cep = '85988-000';
-  print('CEP Informado: $cep');
-
-  final retornoApi = await cepRepository.buscarCep(cep);
-  print('Cidade: ' + retornoApi['city']);
-  print('UF: ' + retornoApi['state']);
-  print('Bairro: ' + retornoApi['district']);
-  print('Endereço: ' + retornoApi['address']);
+  final cepInfo = '06233-030';
+  print('CEP Informado: $cepInfo');
+  print('---------------');
+  
+  final cep = await cepRepository.buscarCep(cepInfo);
+  print(cep.code);
+  print(cep.city);
+  print(cep.state);
+  print(cep.district);
+  print(cep.address);
   print('---------------');
   print('Fim de Consulta');
   
