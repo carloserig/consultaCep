@@ -18,5 +18,9 @@ void main() async {
   print('Buscar Post por ID');
   final post = await postRepository.buscarPorId(4);
   print('title ${post.title}');
-  
+
+  print('---------------');
+  print('Serializar');
+  print(post.toJson());
+
 }
