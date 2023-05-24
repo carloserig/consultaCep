@@ -15,6 +15,14 @@ class PostRepository {
     } 
     final postsList = jsonDecode(response.body);
 
+    print('----postsList----');
+    print(postsList);
+
+    // Exemplo de conversão lista para mapa
+    //print('----postsMap----');
+    //Map postsMap = postsList.asMap();
+    //print(postsMap);
+  
     final todosPosts = postsList.map<Post>((postMap) {
       return Post.fromMap(postMap);
     }).toList();
