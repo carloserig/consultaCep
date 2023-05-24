@@ -4,7 +4,7 @@ void main() async {
 
   final cepRepository = CepRepository();
 
-  print('Consulta de CEP usando apiCEP');
+  print('Consulta de CEP usando viacep');
   print('-----------------------------');  
   final cepInfo = '06233030';
   print('CEP Informado: $cepInfo');

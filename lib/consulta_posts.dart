@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:consulta_cep/repositories/post_repository.dart';
 import 'package:http/http.dart';
 
@@ -8,19 +10,25 @@ void main() async {
   print('Consulta de todos os Posts');
   
   final posts = await postRepository.buscarPosts();
-  //print(posts);
-  for (var post in posts) {
-    print('id ${post.id}');
-    print('title ${post.title}');
-  }
+  print(posts);
 
+  //for (var post in posts) {
+  //  print('id ${post.id}');
+  //  print('title ${post.title}');
+  //}
+  
   print('');
   print('Buscar Post por ID');
   final post = await postRepository.buscarPorId(4);
   print('title ${post.title}');
 
-  print('---------------');
-  print('Serializar');
-  print(post.toJson());
+  //print('---------------');
+  //print('Serializar');
+  //print(post.toJson());
+
+  print(' Serializar Lista - jsonPosts');
+  var postsMap = posts.map((e) => e.toMap()).toList();
+  String jsonPosts = jsonEncode(postsMap);
+  print(jsonPosts);
 
 }

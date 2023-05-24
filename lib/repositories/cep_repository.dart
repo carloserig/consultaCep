@@ -8,6 +8,7 @@ class CepRepository {
       throw Exception('Erro ao buscar CEP');
     } 
     final responseData = response.body;
+    print(responseData.runtimeType);
     print(responseData);
     if (responseData.isEmpty) {
       throw Exception('CEP não encontrado');

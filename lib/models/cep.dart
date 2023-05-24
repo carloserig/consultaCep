@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class Cep {
@@ -47,4 +48,9 @@ class Cep {
   }
 
 
+
+  @override
+  String toString() {
+    return 'Cep(cep: $cep, uf: $uf, localidade: $localidade, bairro: $bairro, logradouro: $logradouro)';
+  }
 }

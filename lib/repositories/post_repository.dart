@@ -15,8 +15,9 @@ class PostRepository {
     } 
     final postsList = jsonDecode(response.body);
 
-    print('----postsList----');
-    print(postsList);
+    print('');
+    print('response.body');
+    print(response.body);
 
     // Exemplo de conversão lista para mapa
     //print('----postsMap----');
