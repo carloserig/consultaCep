@@ -1,36 +1,50 @@
 import 'dart:convert';
 
 class Cep {
-  String code;
-  String state;
-  String city;
-  String district;
-  String address;
+  String cep;
+  String uf;
+  String localidade;
+  String bairro;
+  String logradouro;
 
-  Cep({required this.code, required this.state, required this.city, required this.district, required this.address});
+  Cep({required this.cep, required this.uf, 
+        required this.localidade, required this.bairro, 
+        required this.logradouro});
 
+  
+  // Serialização
+  // Pega o Map<String, dynamic> e transforma em um Json
+  String toJson() => jsonEncode(toMap());
+
+  // Pega o objeto Cep e transforma em um Map<String, dynamic>
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'code': code,
-      'state': state,
-      'city': city,
-      'district': district,
-      'address': address,
+      'cep': cep,
+      'uf': uf,
+      'localidade': localidade,
+      'bairro': bairro,
+      'logradouro': logradouro,
     };
   }
+  
 
-  String toJson() => json.encode(toMap());
+  // Desserialização
+  // Pega a String Json e transforma em um Map<String, dynamic> 
+  factory Cep.fromJson(String json) {
+    final map = jsonDecode(json);
+    return Cep.fromMap(map);
+  } 
 
+  // Pega o Map<String, dynamic> e transforma em um Cep
   factory Cep.fromMap(Map<String, dynamic> map) {
     return Cep(
-      code: map['code'] ?? '',
-      state: map['state'] ?? '',
-      city: map['city'] ?? '',
-      district: map['district'] ?? '',
-      address: map['address'] ?? '',
+      cep: map['cep'] ?? '',
+      uf: map['uf'] ?? '',
+      localidade: map['localidade'] ?? '',
+      bairro: map['bairro'] ?? '',
+      logradouro: map['logradouro'] ?? '',
     );
   }
 
-  factory Cep.fromJson(String source) => Cep.fromMap(json.decode(source) as Map<String, dynamic>);
 
 }

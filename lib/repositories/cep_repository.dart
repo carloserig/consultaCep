@@ -3,8 +3,16 @@ import 'package:http/http.dart';
 class CepRepository {
   
   Future<Cep> buscarCep(String cep) async {
-    final responseCliente = await get(Uri.parse('https://cdn.apicep.com/file/apicep/$cep.json'));  
-    return Cep.fromJson(responseCliente.body);
+    final response = await get(Uri.parse('https://viacep.com.br/ws/$cep/json/')); 
+    if (response.statusCode != 200){
+      throw Exception('Erro ao buscar CEP');
+    } 
+    final responseData = response.body;
+    print(responseData);
+    if (responseData.isEmpty) {
+      throw Exception('CEP não encontrado');
+    }
+    return Cep.fromJson(responseData);
   }
   
 }
